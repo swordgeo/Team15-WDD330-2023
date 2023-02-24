@@ -91,6 +91,27 @@ button {
   font-size: var(--large-font);
   cursor: pointer;
 }
+#searchBtn {
+  border-radius: 0.5em;
+  height:  2em;
+  margin-top: 1em;
+  
+  
+}
+
+#searchbox {
+  margin-top: 1em;
+  border-radius: .5em;
+  height:2.5em;
+
+}
+
+#searchbar {
+  display: flex;
+  column-gap: .5em;
+  margin-left: 26em;
+}
+
 .divider {
   border-bottom: 2px solid var(--primary-color);
 }
