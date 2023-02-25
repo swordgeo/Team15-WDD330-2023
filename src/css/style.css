@@ -94,15 +94,15 @@ button {
 #searchBtn {
   border-radius: 0.5em;
   height:  2em;
-  margin-top: 1em;
+  margin-top: 1.12em;
   
   
 }
 
 #searchbox {
-  margin-top: 1em;
+  margin-top: 1.5em;
   border-radius: .5em;
-  height:2.5em;
+  height: 2em;
 
 }
 
@@ -110,6 +110,41 @@ button {
   display: flex;
   column-gap: .5em;
   margin-left: 26em;
+}
+.container {
+  /* margin: 200px auto; */
+  width: 500px;
+  height: 60px;
+  margin-left: 25em;
+}
+
+/* The point of this tutorial is here */
+.form {
+  display: flex;
+  flex-direction: row;
+  column-gap: .1em;
+}
+.search-field {
+  width: 70%;
+  padding: 10px 35px 10px 15px;
+  border: radius 5px;
+  
+  
+  
+  /* outline:#303030; */
+}
+
+.search-button {
+  background: transparent;
+  margin-top: .5em;
+  margin-right:4em;
+}
+
+.search-button img {
+  width: 30px;
+  height: 20px;
+  
+  /* object-fit: cover; */
 }
 
 .divider {
