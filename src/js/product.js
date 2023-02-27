@@ -15,7 +15,14 @@ function addProductToCart(product) {
   if (!Array.isArray(cartContents)) {
     cartContents = [];
   }
-  cartContents.push(product);
+  //This is where we check to see if the cart already has the item in question and revises the quantity rather than adding a dupe item at quantity 1
+  let existingProductIndex = cartContents.findIndex(p => p.Id === product.Id);
+  if (existingProductIndex !== -1) {
+    cartContents[existingProductIndex].quantity++;
+  } else {
+    product.quantity = 1;
+    cartContents.push(product);
+  }
   setLocalStorage("so-cart", cartContents);
 }
 // add to cart button event handler
