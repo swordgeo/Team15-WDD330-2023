@@ -91,12 +91,8 @@ button {
   font-size: var(--large-font);
   cursor: pointer;
 }
-#searchBtn {
-  border-radius: 0.5em;
-  height:  2em;
-  margin-top: 1.12em;
-  
-  
+.search-button {
+  width: 5em;
 }
 
 #searchbox {
@@ -112,7 +108,6 @@ button {
   margin-left: 26em;
 }
 .container {
-  /* margin: 200px auto; */
   width: 500px;
   height: 60px;
   margin-left: 25em;
