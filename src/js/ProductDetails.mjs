@@ -47,6 +47,7 @@ export default class ProductDetails {
     );
   }
 }
+
   
   
  /* 
@@ -108,3 +109,4 @@ export default class ProductDetails {
 
   }
 */
+
