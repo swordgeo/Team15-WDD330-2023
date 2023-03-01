@@ -1,3 +1,4 @@
+
 import { setLocalStorage } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
@@ -46,3 +47,66 @@ export default class ProductDetails {
     );
   }
 }
+
+  
+  
+ /* 
+  
+  function convertToJson(res) {
+    if (res.ok) {
+      return res.json();
+    } else {
+      throw new Error("Bad Response");
+    }
+  }
+
+  export function getParam(param){
+
+  }
+  
+  export default class ProductDetails {
+    constructor(productId, dataSource){
+        this.productId = productId;
+        this.product = {};
+        this.dataSource = dataSource;
+      }
+      init(){
+        this.product = this.dataSource.findProductById(this.productId);
+      }
+      addProductToCart(product) {
+        setLocalStorage("so-cart", product);
+      }
+      renderProductDetails(
+      ){
+        productName = this.product["Name"];
+        return productName;
+        console.log(productName);
+        /*
+        details = "
+        "NameWithoutBrand": "Ajax Tent - 2-Person, 3-Season",
+    "Name": "Marmot Ajax Tent - 2-Person, 3-Season",
+    "Image": "../images/tents/marmot-ajax-tent-2-person-3-season-in-pale-pumpkin-terracotta~p~880rt_01~320.jpg",
+
+    "SizesAvailable": {},
+    "Colors": [
+      {
+        "ColorCode": "01",
+        "ColorName": "Pale Pumpkin/Terracotta"
+      }
+    ],
+    "DescriptionHtmlSimple": "<strong>Excess</strong>. Get out and enjoy nature with Marmot&#39;s Ajax tent, featuring a smart design with durable, waterproof construction and two doors for easy access.",
+    "SuggestedRetailPrice": 275.0,
+    "Brand": {
+      "Id": "1308",
+      "Name": "Marmot"
+    },
+    "ListPrice": 179.99,
+    "FinalPrice": 179.99
+        "
+
+      }
+    
+
+  }
+*/
+
