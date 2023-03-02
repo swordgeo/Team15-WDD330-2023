@@ -1,5 +1,5 @@
 
-import { setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function productDetailsTemplate(obj) {
   return `<section class="product-detail"> <h3>${obj.Brand.Name}</h3>
@@ -31,15 +31,31 @@ export default class ProductDetails {
     // once we have the product details we can render out the HTML
     this.renderProductDetails("main");
     // once the HTML is rendered we can add a listener to Add to Cart button
-    // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.
     document
       .getElementById("addToCart")
-      .addEventListener("click", this.addToCart.bind(this));
+      .addEventListener("click", () => this.addProductToCart(this.product));
+
   }
 
-  addToCart() {
-    setLocalStorage("so-cart", this.product);
+  addProductToCart(product) {
+    //first I need to grab the cart as it is
+    let cartContents = getLocalStorage("so-cart");
+    //If the cart is empty then .push errors because cartContents isn't an array
+    //Therefore we're gonna create an empty array before moving on
+    if (!Array.isArray(cartContents)) {
+      cartContents = [];
+    }
+    //This is where we check to see if the cart already has the item in question and revises the quantity rather than adding a dupe item at quantity 1
+    let existingProductIndex = cartContents.findIndex(p => p.Id === product.Id);
+    if (existingProductIndex !== -1) {
+      cartContents[existingProductIndex].quantity++;
+    } else {
+      product.quantity = 1;
+      cartContents.push(product);
+    }
+    setLocalStorage("so-cart", cartContents);
   }
+
 
   renderProductDetails(selector) {
     const element = document.querySelector(selector);
