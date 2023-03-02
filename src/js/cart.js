@@ -7,13 +7,13 @@ function renderCartContents() {
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
   let total = 0
   cartItems.map((item) => {
-    total += parseFloat(item.FinalPrice)
+    total += (parseFloat(item.FinalPrice) * parseInt(item.quantity))
 
    }
   );
   
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
-  document.querySelector(".cart-total").innerHTML = `Total: $${total.toFixed(2)}`;
+  document.querySelector(".cart-total").innerHTML = `Total: $${total.toLocaleString("en-US")}`;
 
   //Set total visible or hidden
   var element = document.querySelector(".cart-footer");
