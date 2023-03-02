@@ -5,6 +5,8 @@ function renderCartContents() {
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+  // Get cart total and update cart html
   let total = 0
   cartItems.map((item) => {
     total += (parseFloat(item.FinalPrice) * parseInt(item.quantity))
