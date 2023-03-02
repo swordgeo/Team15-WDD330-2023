@@ -1,6 +1,8 @@
-//import { renderListWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
+  let discountPercent = parseFloat(product.FinalPrice) / parseFloat(product.SuggestedRetailPrice) * 100
+
   return `<li class="product-card">
   <a href="product_pages/index.html?product=${product.Id}">
   <img
@@ -9,8 +11,18 @@ function productCardTemplate(product) {
   />
   <h3 class="card__brand">${product.Brand.Name}</h3>
   <h2 class="card__name">${product.Name}</h2>
-  <p class="product-card__price">$${product.FinalPrice}</p></a>
+  <p class="product-card__price">$${product.FinalPrice}<br> (${discountPercent.toFixed(0)}% off retail)</p></a>
 </li>`;
+}
+
+function filterList(list){
+
+// Only thing I could find to filter by was price
+//This may change later
+var filtered = list.filter(item => item.FinalPrice !== 179.99);
+
+return filtered
+
 }
 
 export default class ProductList {
@@ -25,7 +37,15 @@ export default class ProductList {
     // our dataSource will return a Promise...so we can use await to resolve it.
     const list = await this.dataSource.getData();
     // render the list
-    this.renderList(list);
+    this.renderList(filterList(list));
+  }
+
+  //Filter list
+  filterList(list){
+    //Object.keys(list).
+    //filter((key) => key.includes('Name')).
+    //reduce((cur, key) => { return Object.assign(cur, { [key]: list[key] })}, {});
+    return list
   }
   // render after doing the first stretch
   renderList(list) {
