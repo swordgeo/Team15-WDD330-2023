@@ -13,8 +13,6 @@ function renderCartContents() {
 
    }
   );
-  
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
   document.querySelector(".cart-total").innerHTML = `Total: $${total.toLocaleString("en-US")}`;
 
   //Set total visible or hidden
