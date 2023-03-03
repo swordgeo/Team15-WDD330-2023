@@ -27,6 +27,7 @@ function renderCartContents() {
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
+  <span class="cart-delete">X</span>
   <a href="#" class="cart-card__image">
     <img
       src="${item.Image}"
