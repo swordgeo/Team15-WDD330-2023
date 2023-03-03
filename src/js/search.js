@@ -1,12 +1,13 @@
-import { getLocalStorage} from "./utils.mjs";
+
 
 function mySearchFunction() {
     
+    // console.log("I was clicked.")//This is for testing purposes. 
 
 
         let input, filter, ul, li, a, i;
         input = document.getElementById("searchBar");
-        filter = input.ariaValueMax.toUpperCase();
+        filter = input.value.toUpperCase();
         ul = document.getElementById("mySearch");
         li = ul.getElementsByTagName("li");
         for (i = 0; i< li.length; i++) {
