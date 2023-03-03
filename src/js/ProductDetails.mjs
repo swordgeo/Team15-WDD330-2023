@@ -10,7 +10,7 @@ function productDetailsTemplate(obj) {
       alt="${obj.NameWithoutBrand}"
     />
     <p class="product-card__price">$${obj.FinalPrice}</p>
-    <p class="product__color">${obj.Colors[0]['ColorName']}</p>
+    <p class="product__color">${obj.Colors[0]["ColorName"]}</p>
     <p class="product__description">
     ${obj.DescriptionHtmlSimple}
     </p>

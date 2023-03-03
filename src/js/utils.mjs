@@ -30,3 +30,12 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+
+export function renderListWithTemplate(func, Element, list, position = "afterbegin", clear = false) {
+  const htmlStrings = list.map(func);
+  if(clear){
+    Element.innerHTML = "";
+  }
+  Element.insertAdjacentHTML(position, htmlStrings.join(""));
+  // this.listElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}
