@@ -29,7 +29,7 @@ export default class ProductList {
     this.renderList(list);
   }
   // render after doing the first stretch
-  render(list) {
+  renderList(list) {
     renderListWithTemplate(productCardTemplate, this.htmltElement, list)
   }
 
