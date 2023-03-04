@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/css/style.css" />
     <script src="js/main.js" type="module"></script>
     <script src="js/cart-count.js" type="module"></script>
+    
+    
   </head>
   <body>
     <header class="divider">
@@ -14,6 +16,10 @@
         <img src="/images/noun_Tent_2517.svg" alt="tent image for logo" />
         <a href="index.html"> Sleep<span class="highlight">Outside</span></a>
       </div>
+      <div class="search" >
+        <input type="search" id="searchBar" onkeyup="mySearchFunction()" onclick="mySearchFunction()" placeholder="Search..." title="Type in a category">
+      </div>
+
       <div class="cart">
         <a href="cart/index.html">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -67,7 +73,7 @@
       <section class="products">
         <h2>Top Products</h2>
 
-        <ul class="product-list">
+        <ul class="product-list" id="mySearch">
           <!--
           <li class="product-card">
             <a href="product_pages/index.html?product=880RR">
@@ -119,5 +125,27 @@
       </section>
     </main>
     <footer>&copy;NOT a real business</footer>
+
   </body>
+  <script>function mySearchFunction() {
+    
+    console.log("I was clicked.")//This is for testing purposes. 
+
+
+       let input, filter, ul, li, a, i;
+       input = document.getElementById("searchBar");
+       filter = input.value.toUpperCase();
+       ul = document.getElementById("mySearch");
+       li = ul.getElementsByTagName("li");
+       for (i = 0; i< li.length; i++) {
+           a = li[i].getElementsByTagName("a")[0];
+           if (a.innerHTML.toUpperCase().indexOf(filter) > - 1) {
+               li[i].style.display = "";
+           } else {
+               li[i].style.display = "none";
+           }
+
+       }
+}
+</script>
 </html>
