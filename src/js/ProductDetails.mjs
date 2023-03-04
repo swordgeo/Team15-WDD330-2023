@@ -1,4 +1,4 @@
-
+import { updateCartCount } from "./cart-count.js";
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function productDetailsTemplate(obj) {
@@ -10,7 +10,7 @@ function productDetailsTemplate(obj) {
       alt="${obj.NameWithoutBrand}"
     />
     <p class="product-card__price">$${obj.FinalPrice}</p>
-    <p class="product__color">${obj.Colors[0]['ColorName']}</p>
+    <p class="product__color">${obj.Colors[0]["ColorName"]}</p>
     <p class="product__description">
     ${obj.DescriptionHtmlSimple}
     </p>
@@ -54,6 +54,7 @@ export default class ProductDetails {
       cartContents.push(product);
     }
     setLocalStorage("so-cart", cartContents);
+    updateCartCount();
   }
 
 

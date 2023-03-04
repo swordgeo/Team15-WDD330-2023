@@ -1,4 +1,5 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { updateCartCount } from "./cart-count.js";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -27,6 +28,7 @@ function renderCartContents() {
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
+  <span class="cart-delete" title="Delete Cart Item" id="${item.Id}">x</span>
   <a href="#" class="cart-card__image">
     <img
       src="${item.Image}"
@@ -44,5 +46,22 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+function deleteCartItem() {
+  let cartItems = getLocalStorage("so-cart");
+  const itemId = this.id;
+  cartItems.splice(cartItems.findIndex(item => item.Id === itemId), 1);
+  setLocalStorage("so-cart", cartItems);
+  renderCartContents();
+  createItemDelete();
+  updateCartCount();
+}
+
+function createItemDelete() {
+  var cart = document.getElementsByClassName("cart-delete");
+  for (var i = 0; i < cart.length; i++) {
+    cart[i].addEventListener("click", deleteCartItem);
+  }
+}
 
 renderCartContents();
+createItemDelete();
