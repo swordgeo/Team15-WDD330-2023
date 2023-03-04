@@ -147,7 +147,7 @@ button {
 
 /* End cart icon styles */
 
-.mission {
+.mission, .alert-list {
   padding: 0 0.5em;
   /* margin: 0.5em 0; */
   line-height: 1.3;

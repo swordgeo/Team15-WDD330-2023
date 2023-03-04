@@ -1,7 +1,7 @@
 import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
-  let discountPercent = parseFloat(product.FinalPrice) / parseFloat(product.SuggestedRetailPrice) * 100
+  let discountPercent = parseFloat(product.FinalPrice) / parseFloat(product.SuggestedRetailPrice) * 100;
 
   return `<li class="product-card">
   <a href="product_pages/index.html?product=${product.Id}">
