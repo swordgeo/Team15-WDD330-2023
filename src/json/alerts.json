@@ -3,5 +3,10 @@
     "message": "This is only a test.",
     "background": "darkblue",
     "color": "white"
+  },
+  {
+    "message": "test 2",
+    "background": "red",
+    "color": "green"
   }
 ]
