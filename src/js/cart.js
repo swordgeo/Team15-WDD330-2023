@@ -1,5 +1,10 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
-import { updateCartCount } from "./cart-count.js";
+// import { updateCartCount } from "./cart-count.js";
+import { loadHeaderFooter } from "./utils.mjs";
+
+const headerEl = document.querySelector("header");
+const footerEl = document.querySelector("footer");
+loadHeaderFooter(headerEl, footerEl);
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -58,7 +63,7 @@ function deleteCartItem() {
   renderCartContents();
   createItemDelete();
   createQuantityUpdate();
-  updateCartCount();
+  // updateCartCount();
 }
 
 function createItemDelete() {
@@ -84,7 +89,7 @@ function updateQuantity() {
       renderCartContents();
       createItemDelete();
       createQuantityUpdate();
-      updateCartCount();
+      // updateCartCount();
     } else {
       console.error(`Invalid quantity: ${newQuantity}`);
     }
