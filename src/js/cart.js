@@ -1,16 +1,19 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 // import { updateCartCount } from "./cart-count.js";
 import { loadHeaderFooter } from "./utils.mjs";
+import ShoppingCart from "./ShoppingCart.mjs";
 
 const headerEl = document.querySelector("header");
 const footerEl = document.querySelector("footer");
 loadHeaderFooter(headerEl, footerEl);
 
-function renderCartContents() {
+const cart = new ShoppingCart("so-cart", ".product-list");
+cart.renderCartContents();
+
+
+
+function renderCartTotal() {
   const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
   // Get cart total and update cart html
   let total = 0
@@ -30,37 +33,14 @@ function renderCartContents() {
 
 }
 
-function cartItemTemplate(item) {
-  const newItem = `<li class="cart-card divider">
-  <span class="cart-delete" title="Delete Cart Item" id="${item.Id}">x</span>
-  <a href="#" class="cart-card__image">
-    <img
-      src="${item.Image}"
-      alt="${item.Name}"
-    />
-  </a>
-  <a href="#">
-    <h2 class="card__name">${item.Name}</h2>
-  </a>
-  <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <div>
-    <p class="cart-card__quantity">qty: <input type="number" value="${item.quantity}" min="1" class="cart-item-quantity-input"></p>
-    <button class="update-quantity-btn" id="${item.Id}">Update Quantity</button>
-  </div>
-
-  <p class="cart-card__price">$${item.FinalPrice}</p>
-</li>`;
-
-  return newItem;
-}
-
 function deleteCartItem() {
   let cartItems = getLocalStorage("so-cart");
   const itemId = this.id;
   cartItems.splice(cartItems.findIndex(item => item.Id === itemId), 1);
   setLocalStorage("so-cart", cartItems);
   //regenerate
-  renderCartContents();
+  cart.renderCartContents();
+  renderCartTotal();
   createItemDelete();
   createQuantityUpdate();
   // updateCartCount();
@@ -86,7 +66,8 @@ function updateQuantity() {
       cartItems[itemIndex].quantity = parseInt(newQuantity);
       setLocalStorage("so-cart", cartItems);
       //regenerate
-      renderCartContents();
+      cart.renderCartContents();
+      renderCartTotal();
       createItemDelete();
       createQuantityUpdate();
       // updateCartCount();
@@ -106,7 +87,7 @@ function createQuantityUpdate() {
   }
 }
 
-renderCartContents();
+renderCartTotal();
 createItemDelete();
   //this wants to be here so that we can continue using all the buttons without refresh
 createQuantityUpdate();
