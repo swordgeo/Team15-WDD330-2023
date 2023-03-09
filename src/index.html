@@ -7,12 +7,9 @@
     <link rel="stylesheet" href="/css/style.css" />
     <script src="js/main.js" type="module"></script>
     <script src="js/cart-count.js" type="module"></script>
-    
-    
   </head>
   <body>
-    <header class="divider" id="header">
-    </header>
+    <header class="divider" id="header"></header>
     <main class="divider">
       <div class="hero">
         <img
@@ -35,43 +32,54 @@
         </p>
       </section>
       <section class="products">
+        <h2>Products</h2>
         <div class="product-listing">
-          <a href="product-listing/index.html?category=tents"><img class="product-listing-icon" src="https://byui-cit.github.io/wdd330/images/category-icons/noun_Tent_3544767.svg" alt="Tent Icon from Noun Project: Mustofa Bayu"></a>
-          <a href="product-listing/index.html?category=sleeping-bags"><img class="product-listing-icon" src="https://byui-cit.github.io/wdd330/images/category-icons/noun_Sleeping%20Bag_3544775.svg" alt="Sleeping Bag Icon from Noun Project: Mustofa Bayu"></a>
-          <a href="product-listing/index.html?category=backpacks"><img class="product-listing-icon" src="https://byui-cit.github.io/wdd330/images/category-icons/noun_carrier%20bag_3544771.svg" alt="Backpack from Noun Project: Mustofa Bayu"></a>
-          <a href="product-listing/index.html?category=hammocks"><img class="product-listing-icon" src="https://byui-cit.github.io/wdd330/images/category-icons/noun_Hammock_791143.svg" alt="Hammock Bag Icon from Noun Project: Mustofa Bayu"></a>
+          <a href="product-listing/index.html?category=tents"
+            ><img
+              class="product-listing-icon"
+              src="https://byui-cit.github.io/wdd330/images/category-icons/noun_Tent_3544767.svg"
+              alt="Tent Icon from Noun Project: Mustofa Bayu"
+          /></a>
+          <a href="product-listing/index.html?category=sleeping-bags"
+            ><img
+              class="product-listing-icon"
+              src="https://byui-cit.github.io/wdd330/images/category-icons/noun_Sleeping%20Bag_3544775.svg"
+              alt="Sleeping Bag Icon from Noun Project: Mustofa Bayu"
+          /></a>
+          <a href="product-listing/index.html?category=backpacks"
+            ><img
+              class="product-listing-icon"
+              src="https://byui-cit.github.io/wdd330/images/category-icons/noun_carrier%20bag_3544771.svg"
+              alt="Backpack from Noun Project: Mustofa Bayu"
+          /></a>
+          <a href="product-listing/index.html?category=hammocks"
+            ><img
+              class="product-listing-icon"
+              src="https://byui-cit.github.io/wdd330/images/category-icons/noun_Hammock_791143.svg"
+              alt="Hammock Bag Icon from Noun Project: Mustofa Bayu"
+          /></a>
         </div>
-        <h2>Top Products</h2>
-
-        <ul class="product-list" id="mySearch">
-
-        </ul>
-
       </section>
-    
     </main>
     <footer id="footer"></footer>
-
   </body>
-  <script>function mySearchFunction() {
-    
-    console.log("I was clicked.")//This is for testing purposes. 
+  <script>
+    function mySearchFunction() {
+      console.log("I was clicked."); //This is for testing purposes.
 
-
-       let input, filter, ul, li, a, i;
-       input = document.getElementById("searchBar");
-       filter = input.value.toUpperCase();
-       ul = document.getElementById("mySearch");
-       li = ul.getElementsByTagName("li");
-       for (i = 0; i< li.length; i++) {
-           a = li[i].getElementsByTagName("a")[0];
-           if (a.innerHTML.toUpperCase().indexOf(filter) > - 1) {
-               li[i].style.display = "";
-           } else {
-               li[i].style.display = "none";
-           }
-
-       }
-}
-</script>
+      let input, filter, ul, li, a, i;
+      input = document.getElementById("searchBar");
+      filter = input.value.toUpperCase();
+      ul = document.getElementById("mySearch");
+      li = ul.getElementsByTagName("li");
+      for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          li[i].style.display = "";
+        } else {
+          li[i].style.display = "none";
+        }
+      }
+    }
+  </script>
 </html>

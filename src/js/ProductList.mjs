@@ -38,6 +38,8 @@ export default class ProductList {
     const list = await this.dataSource.getData(this.category);
     // render the list
     this.renderList(filterList(list));
+    // Update Title
+    document.querySelector(".title").innerHTML = this.category;
   }
 
   //Filter list

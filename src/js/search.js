@@ -1,9 +1,6 @@
-
-
 // function mySearchFunction() {
-    
-//      //console.log("I was clicked.")//This is for testing purposes. 
 
+//      //console.log("I was clicked.")//This is for testing purposes.
 
 //         let input, filter, ul, li, a, i;
 //         input = document.getElementById("searchBar");
