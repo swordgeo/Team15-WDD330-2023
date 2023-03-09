@@ -284,3 +284,12 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+.product-listing {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.product-listing-icon {
+  width: 100px;
+}
