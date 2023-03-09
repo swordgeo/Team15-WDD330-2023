@@ -22,6 +22,30 @@ body {
   font-size: var(--font-base);
   color: var(--dark-grey);
 }
+.categories {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 0;
+
+}
+.categories ul{
+  display: flex;
+  justify-content: space-between;
+  gap: 10em;
+}
+.categories img {
+  max-height: 4em;
+}
+.categories a {
+  text-decoration: none;
+  color: #303030;
+  
+}
+.categories li {
+  list-style-type: none;
+}
 img {
   max-width: 100%;
 }
