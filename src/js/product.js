@@ -1,7 +1,7 @@
-import { getParam } from "./utils.mjs";
+import { getParam, loadHeaderFooter } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import ProductDetails from "./ProductDetails.mjs";
-import { loadHeaderFooter } from "./utils.mjs";
+import { updateCartCount } from "./cart-count.js";
 
 const headerEl = document.querySelector("header");
 const footerEl = document.querySelector("footer");
@@ -12,3 +12,5 @@ const productId = getParam("product");
 
 const product = new ProductDetails(productId, dataSource);
 product.init();
+
+updateCartCount();

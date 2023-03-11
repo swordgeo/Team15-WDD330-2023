@@ -1,4 +1,4 @@
-// import { updateCartCount } from "./cart-count.js";
+import { updateCartCount } from "./cart-count.js";
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function productDetailsTemplate(obj) {
@@ -54,6 +54,8 @@ export default class ProductDetails {
       cartContents.push(product);
     }
     setLocalStorage("so-cart", cartContents);
+    //this reloads updateCartCount()
+    window.dispatchEvent(new Event('load'));
     // updateCartCount();
   }
 

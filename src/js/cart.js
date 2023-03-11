@@ -1,7 +1,6 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
-// import { updateCartCount } from "./cart-count.js";
-import { loadHeaderFooter } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, loadHeaderFooter } from "./utils.mjs";
 import ShoppingCart from "./ShoppingCart.mjs";
+import { updateCartCount } from "./cart-count.js";
 
 const headerEl = document.querySelector("header");
 const footerEl = document.querySelector("footer");
@@ -44,12 +43,17 @@ function deleteCartItem() {
   renderCartTotal();
   createItemDelete();
   createQuantityUpdate();
-  // updateCartCount();
+  //this recalls updateCartCount()
+  window.dispatchEvent(new Event('load'));
 }
 
 function createItemDelete() {
-  var cartClass = document.getElementsByClassName("cart-delete");
-  for (var i = 0; i < cart.length; i++) {
+  // var cartClass = document.getElementsByClassName("cart-delete");
+  const cartClass = document.querySelectorAll(".cart-delete");
+  // for (var i = 0; i < cart.length; i++) {
+  //   cartClass[i].addEventListener("click", deleteCartItem);
+  // }
+  for (let i = 0; i < cartClass.length; i++) {
     cartClass[i].addEventListener("click", deleteCartItem);
   }
 }
@@ -73,7 +77,8 @@ function updateQuantity() {
       renderCartTotal();
       createItemDelete();
       createQuantityUpdate();
-      // updateCartCount();
+      //this recalls updateCartCount()
+      window.dispatchEvent(new Event('load'));
     } else {
       console.error(`Invalid quantity: ${newQuantity}`);
     }
@@ -83,9 +88,13 @@ function updateQuantity() {
 }
 
 function createQuantityUpdate() {
-  var cartClass = document.getElementsByClassName("update-quantity-btn");
-  for (var i = 0; i < cart.length; i++) {
-    cartClass[i].addEventListener("click", updateQuantity);
+  // var cartClass = document.getElementsByClassName("update-quantity-btn");
+  const quantityUpdateBtns = document.querySelectorAll(".update-quantity-btn");
+  // for (var i = 0; i < cart.length; i++) {
+  //   cartClass[i].addEventListener("click", updateQuantity);
+  // }
+  for (let i = 0; i < quantityUpdateBtns.length; i++) {
+    quantityUpdateBtns[i].addEventListener("click", updateQuantity);
   }
 }
 
@@ -93,3 +102,4 @@ renderCartTotal();
 createItemDelete();
 //this wants to be here so that we can continue using all the buttons without refresh
 createQuantityUpdate();
+updateCartCount();
