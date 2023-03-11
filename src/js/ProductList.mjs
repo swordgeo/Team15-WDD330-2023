@@ -67,8 +67,7 @@ export default class ProductList {
 
     // render the list
     this.renderList(filterList(list));
-    // Update Title
-    document.querySelector(".title").innerHTML = this.category;
+    
   }
 
   //Filter list
