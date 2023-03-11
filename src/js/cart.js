@@ -43,12 +43,17 @@ function deleteCartItem() {
   renderCartTotal();
   createItemDelete();
   createQuantityUpdate();
-  updateCartCount();
+  //this recalls updateCartCount()
+  window.dispatchEvent(new Event('load'));
 }
 
 function createItemDelete() {
-  var cartClass = document.getElementsByClassName("cart-delete");
-  for (var i = 0; i < cart.length; i++) {
+  // var cartClass = document.getElementsByClassName("cart-delete");
+  const cartClass = document.querySelectorAll(".cart-delete");
+  // for (var i = 0; i < cart.length; i++) {
+  //   cartClass[i].addEventListener("click", deleteCartItem);
+  // }
+  for (let i = 0; i < cartClass.length; i++) {
     cartClass[i].addEventListener("click", deleteCartItem);
   }
 }
@@ -72,7 +77,8 @@ function updateQuantity() {
       renderCartTotal();
       createItemDelete();
       createQuantityUpdate();
-      updateCartCount();
+      //this recalls updateCartCount()
+      window.dispatchEvent(new Event('load'));
     } else {
       console.error(`Invalid quantity: ${newQuantity}`);
     }
@@ -82,9 +88,13 @@ function updateQuantity() {
 }
 
 function createQuantityUpdate() {
-  var cartClass = document.getElementsByClassName("update-quantity-btn");
-  for (var i = 0; i < cart.length; i++) {
-    cartClass[i].addEventListener("click", updateQuantity);
+  // var cartClass = document.getElementsByClassName("update-quantity-btn");
+  const quantityUpdateBtns = document.querySelectorAll(".update-quantity-btn");
+  // for (var i = 0; i < cart.length; i++) {
+  //   cartClass[i].addEventListener("click", updateQuantity);
+  // }
+  for (let i = 0; i < quantityUpdateBtns.length; i++) {
+    quantityUpdateBtns[i].addEventListener("click", updateQuantity);
   }
 }
 

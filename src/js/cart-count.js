@@ -2,14 +2,15 @@ import { getLocalStorage } from "./utils.mjs";
 
 export function updateCartCount() {
 
+  //We have to do this because of the header being loaded through a snippet.
+  //It now waits until the ENTIRE page is loaded before proceeding.
+  //In order to make this call update (during quanitity edits/deleted from cart)
+  //window.dispatchEvent(new Event('load'));
   window.onload = function() {
     const cartItems = getLocalStorage("so-cart");
     const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
   
     const cartCountEl = document.querySelector("#cart-count");
-    console.log(cartCountEl);
-    console.log(cartCount);
-    console.log(cartItems);
     if (cartCount === 0 || !cartItems) {
       cartCountEl.style.display = "none";
     } else {

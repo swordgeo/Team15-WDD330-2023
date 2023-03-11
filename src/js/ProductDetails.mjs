@@ -54,7 +54,9 @@ export default class ProductDetails {
       cartContents.push(product);
     }
     setLocalStorage("so-cart", cartContents);
-    updateCartCount();
+    //this reloads updateCartCount()
+    window.dispatchEvent(new Event('load'));
+    // updateCartCount();
   }
 
 
