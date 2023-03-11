@@ -16,5 +16,3 @@ export function updateCartCount() {
     cartCountEl.textContent = displayCount; // use the displayCount variable instead of the cartCount variable
   }
 }
-
-updateCartCount();
