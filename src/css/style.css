@@ -288,3 +288,8 @@ footer {
 .product-listing-icon {
   width: 100px;
 }
+
+.product-listing picture {
+  display: grid;
+  justify-items: center;
+}
