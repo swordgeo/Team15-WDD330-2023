@@ -7,8 +7,16 @@ const footerEl = document.querySelector("footer");
 loadHeaderFooter(headerEl, footerEl);
 
 const category = getParam("category");
+const sortType = getParam("product-list-sort")
 const dataSource = new ProductData();
 const element = document.querySelector(".product-list");
-const listing = new ProductList(category, dataSource, element);
+
+// Set html tags
+document.getElementById("product-list-sort").value = sortType;
+document.getElementById("product-list-category").value = category;
+document.getElementById("product-category").innerHTML = category;
+
+const listing = new ProductList(category, dataSource, element,sortType);
+
 
 listing.init();

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sleep Outside | Home</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <script src="../js/product-listing.js" type="module"></script>
+    <script defer src="../js/product-listing.js" type="module"></script>
   </head>
   <body>
     <header class="divider" id="header"></header>
@@ -30,8 +30,19 @@
           comfortably at an affordable price.
         </p>
       </section>
+      <a href="../index.html"><p>Back to products</p></a>
       <section class="products">
-        <h2>Top Products</h2>
+        <h2>Top Products | <span id="product-category"></span></h2>
+        <label for="product-list-sort">Sort</label>
+        <form action="/product-listing/index.html">
+          <select name="product-list-sort" id="product-list-sort" onchange="this.form.submit()">
+            <option selected value="name-az">A-Z</option>
+            <option value="name-za">Z-A</option>
+            <option value="price-lh">Price - Low to High</option>
+            <option value="price-hl">Price - High to Low</option>
+          </select>
+          <input type="hidden" id="product-list-category" name="category" value="tents">
+        </form>
 
         <ul class="product-list" id="mySearch"></ul>
       </section>

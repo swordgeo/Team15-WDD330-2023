@@ -44,8 +44,6 @@ export function renderListWithTemplate(
   //if (clear) {
   //parentElement.innerHTML() = ""
   //}
-  list = sortList(list,false,"price")
-  console.log(list);
 
   const htmlStrings = list.map(templateFn);
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
@@ -116,5 +114,6 @@ export function sortList(list, ascending = true, value) {
         });
       }
       //return list
+      return list
   }
 }
