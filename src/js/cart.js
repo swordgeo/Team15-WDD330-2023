@@ -1,7 +1,6 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
-// import { updateCartCount } from "./cart-count.js";
-import { loadHeaderFooter } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, loadHeaderFooter } from "./utils.mjs";
 import ShoppingCart from "./ShoppingCart.mjs";
+import { updateCartCount } from "./cart-count.js";
 
 const headerEl = document.querySelector("header");
 const footerEl = document.querySelector("footer");
@@ -44,7 +43,7 @@ function deleteCartItem() {
   renderCartTotal();
   createItemDelete();
   createQuantityUpdate();
-  // updateCartCount();
+  updateCartCount();
 }
 
 function createItemDelete() {
@@ -73,7 +72,7 @@ function updateQuantity() {
       renderCartTotal();
       createItemDelete();
       createQuantityUpdate();
-      // updateCartCount();
+      updateCartCount();
     } else {
       console.error(`Invalid quantity: ${newQuantity}`);
     }
@@ -93,3 +92,4 @@ renderCartTotal();
 createItemDelete();
 //this wants to be here so that we can continue using all the buttons without refresh
 createQuantityUpdate();
+updateCartCount();
