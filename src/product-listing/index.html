@@ -35,13 +35,22 @@
         <h2>Top Products | <span id="product-category"></span></h2>
         <label for="product-list-sort">Sort</label>
         <form action="/product-listing/index.html">
-          <select name="product-list-sort" id="product-list-sort" onchange="this.form.submit()">
+          <select
+            name="product-list-sort"
+            id="product-list-sort"
+            onchange="this.form.submit()"
+          >
             <option selected value="name-az">A-Z</option>
             <option value="name-za">Z-A</option>
             <option value="price-lh">Price - Low to High</option>
             <option value="price-hl">Price - High to Low</option>
           </select>
-          <input type="hidden" id="product-list-category" name="category" value="tents">
+          <input
+            type="hidden"
+            id="product-list-category"
+            name="category"
+            value="tents"
+          />
         </form>
 
         <ul class="product-list" id="mySearch"></ul>
