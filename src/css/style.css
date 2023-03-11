@@ -208,6 +208,15 @@ button {
   width: 100%;
 }
 
+.product-listing {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.product-listing-icon {
+  width: 125px;
+}
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;
