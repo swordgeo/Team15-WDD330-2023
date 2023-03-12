@@ -17,6 +17,7 @@ function productCardTemplate(product) {
   <p class="product-card__price">$${
     product.FinalPrice
   }<br> (${discountPercent.toFixed(0)}% off retail)</p></a>
+  <button class="quick-view-button" data-product-id=${product.Id}>Quick View</button>
 </li>`;
 }
 
