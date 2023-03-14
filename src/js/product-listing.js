@@ -17,6 +17,14 @@ document.getElementById("product-list-sort").value = sortType;
 document.getElementById("product-list-category").value = category;
 document.getElementById("product-category").innerHTML = category;
 
+const breadcrumb = document.getElementById("breadCrumbs")
+const breadCrumbChild = document.createElement("a")
+breadCrumbChild.href = ""
+breadCrumbChild.innerHTML = category
+breadcrumb.appendChild(breadCrumbChild)
+console.log("bread crumb is here...")
+console.log(breadcrumb)
+
 const listing = new ProductList(category, dataSource, element, sortType);
 
 listing.init();

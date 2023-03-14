@@ -6,6 +6,7 @@
     <title>Sleep Outside | Home</title>
     <link rel="stylesheet" href="/css/style.css" />
     <script defer src="../js/product-listing.js" type="module"></script>
+    
   </head>
   <body>
     <header class="divider" id="header"></header>
@@ -56,6 +57,27 @@
         <ul class="product-list" id="mySearch"></ul>
       </section>
     </main>
+    <div id="breadCrumbs" ><a href="http://localhost:5173/index.html">Home</a></div>
     <footer id="footer"></footer>
+    <!-- <script src="js/search.js" type="module"></script> -->
+    <script>
+      function mySearchFunction() {
+        console.log("I was clicked."); //This is for testing purposes.
+  
+        let input, filter, ul, li, a, i;
+        input = document.getElementById("searchBar");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("mySearch");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+          a = li[i].getElementsByTagName("a")[0];
+          if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+          } else {
+            li[i].style.display = "none";
+          }
+        }
+      }
+    </script>
   </body>
 </html>
