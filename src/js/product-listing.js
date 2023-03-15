@@ -1,4 +1,4 @@
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import ProductList from "./ProductList.mjs";
 import { loadHeaderFooter, getParam } from "./utils.mjs";
 import { updateCartCount } from "./cart-count.js";
@@ -9,9 +9,9 @@ loadHeaderFooter(headerEl, footerEl);
 
 const category = getParam("category");
 const sortType = getParam("product-list-sort");
-const dataSource = new ProductData();
+const dataSource = new ExternalServices();
 const element = document.querySelector(".product-list");
-
+ExternalServices
 // Set html tags
 document.getElementById("product-list-sort").value = sortType;
 document.getElementById("product-list-category").value = category;
