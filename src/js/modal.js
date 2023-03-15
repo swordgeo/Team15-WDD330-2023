@@ -1,5 +1,6 @@
 import { updateCartCount } from "./cart-count.js";
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import ProductDetails from "./ProductDetails.mjs";
 
 
 function modalClicker() {
@@ -54,12 +55,16 @@ export default class ModalDetails {
         
         const id = document.querySelector("data-product-id")
         const productId = event.target.dataset.productId;
-        console.log(productId)
+        console.log(productId);
+        const product = new ProductDetails(productId, this.dataSource);
+        product.init();
+        console.log(product);
+
 
         //We're reading a product Id. Get the product and we're in the home stretch!!!
 
         // console.log(ModalDiv)
-        this.renderModalDetails(this.product, modalDiv);
+        this.renderModalDetails(product, this.modalElement);
 
       });
     });
