@@ -25,22 +25,22 @@ const listing = new ProductList(category, dataSource, element, sortType);
 
 listing.init();
 
-console.log("before")
-console.log(document.querySelectorAll(".quick-view-button"));
+// console.log("before")
+// console.log(document.querySelectorAll(".quick-view-button"));
 
 window.onload = async function() {
-  console.log("after")
-  console.log(document.querySelectorAll(".quick-view-button"));
-  const quickViewButtons = document.querySelectorAll(".quick-view-button");
+  // console.log("after")
+  // console.log(document.querySelectorAll(".quick-view-button"));
+  // const quickViewButtons = document.querySelectorAll(".quick-view-button");
   
-  quickViewButtons.forEach((button) => {
-    button.addEventListener("click", (event) => {
-      console.log("click");
-      const productId = event.target.dataset.productId;
-      modalClicker(productId);
-    });
-  });
-  updateCartCount();
+  // quickViewButtons.forEach((button) => {
+  //   button.addEventListener("click", (event) => {
+  //     console.log("click");
+  //     const productId = event.target.dataset.productId;
+  //     modalClicker(productId);
+  //   });
+  // });
+  // updateCartCount();
 }
 
   // quickViewButtons.forEach((button) => {

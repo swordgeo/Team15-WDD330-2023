@@ -3,7 +3,7 @@ import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 
 function modalClicker() {
-  const quickViewButtons = document.getElementsByClassName('quick-view-button');
+  const quickViewButtons = document.getElementsByClassName("quick-view-button");
   for (let i = 0; i < quickViewButtons.length; i++) {
     quickViewButtons[i].addEventListener('click', () => this.renderModalDetails(this.product));
   }
@@ -36,14 +36,39 @@ export default class ModalDetails {
   }
 
   async init() {
-    const product = await this.dataSource.getProduct(this.productId);
-    this.product = product;
+    // this.product = await this.dataSource.findProductById(this.productId);
+
+    // document
+    //   .getElementById("addToCart")
+    //   .addEventListener("click", () => this.addProductToCart(this.product));
+    const modalDiv = document.querySelector(".modal");
+
+    const quickViewButtons = document.querySelectorAll(".quick-view-button");
+  
+    quickViewButtons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        console.log("Click")
+        // modalDiv.textContent = "<h1>Hello!</h1>";
+        // modalDiv.style.display = "block";
+        // console.log("click");
+        
+        const id = document.querySelector("data-product-id")
+        const productId = event.target.dataset.productId;
+        console.log(productId)
+
+        //We're reading a product Id. Get the product and we're in the home stretch!!!
+
+        // console.log(ModalDiv)
+        this.renderModalDetails(this.product, modalDiv);
+
+      });
+    });
   }
 
-  renderModalDetails(product) {
+  renderModalDetails(product, modalElement) {
     const modalContent = modalDetailsTemplate(product);
     this.modalElement.innerHTML = modalContent;
-    this.modalElement.classList.add("open");
+    this.modalElement.style.display = "block";
   }
 
   closeModal() {

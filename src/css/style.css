@@ -293,3 +293,7 @@ footer {
   display: grid;
   justify-items: center;
 }
+
+.modal {
+  display: none;
+}
