@@ -9,7 +9,7 @@ loadHeaderFooter(headerEl, footerEl);
 const cart = new ShoppingCart("so-cart", ".product-list");
 cart.renderCartContents();
 
-function renderCartTotal() {
+export function renderCartTotal() {
   const cartItems = getLocalStorage("so-cart");
 
   // Get cart total and update cart html
