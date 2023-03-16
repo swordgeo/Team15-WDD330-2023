@@ -43,6 +43,59 @@ a {
   padding: .2em;
   
 }
+.newsLetterModal{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: white;
+  width: 500px;
+  max-width: 80%;
+}
+.newsLetterModal.active{
+  transform: translate(-50%, -50%) scale(1);
+}
+.modal-header{
+  padding: 10px 15px;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+.modal-header .title{
+  font-size: 1.25em;
+  font-weight: bold;
+}
+.modal-header .close-button{
+  margin-right: -1.5em;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  color:  #303030;
+  font-size: 2em;
+  font-weight: bold;
+  
+}
+.newsLetterModal-body{
+  padding: 10px 15px;
+}
+#email{
+  margin-left: 3.1em;
+}
+#signUpDiv{
+  display: flex;
+  margin-left: 12em;
+}
+#signUpDiv button{
+  margin-right: 12em;
+}
+
 img {
   max-width: 100%;
 }
@@ -50,6 +103,20 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 0 10px;
+}
+#overlay {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,.5);
+  pointer-events: none;
+}
+#overlay.active{
+  pointer-events: all;
+  opacity: 1;
 }
 .logo {
   line-height: 60px;

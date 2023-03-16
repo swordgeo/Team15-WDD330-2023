@@ -6,6 +6,8 @@
     <title>Sleep Outside | Home</title>
     <link rel="stylesheet" href="/css/style.css" />
     <script src="js/main.js" type="module"></script>
+    <script src="js/modal.js" type="module"></script>
+    
     
   </head>
   <body>
@@ -22,6 +24,60 @@
           <div>Sleep<span class="highlight">Outside</span></div>
         </div>
       </div>
+
+
+
+
+
+      <div id="signUpDiv">
+        <h2>Sign up for the Newsletter here: </h2>
+        <button data-modal-target="#newsLetter">Sign-up</button>
+    </div>
+      
+      <div class="newsLetterModal" id="newsLetter">
+
+        <div class="modal-header">
+          <div class="title">Newsletter Sign-up</div>
+          <button data-close-button class="close-button" onclick="console.log('Hello, your clicked me.')">&times;</button>
+        </div>
+
+        <div class="newsLetterModal-body"><br>
+          <form action="#">
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" placeholder="John"><br>
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" placeholder="Doe"><br>
+            <label for="email">Email: </label>
+            <input type="email" id="email" placeholder="user@sleepoutside.com" /><br><br>
+            <button class="btnNewsLetter" id="thanksAlert">Sign Up</button><br>
+          </form>
+          
+        </div>
+
+      </div>
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- <div class="newsLetter">
+        <div>
+          <h3><a>Sign up for our Newsletter!</a></h3>
+        </div>
+
+        <input type="email" id="email" placeholder="user@sleepoutside.com" />
+        <button class="btnNewsLetter" type="submit">Sign Up</button>
+      </div> -->
       <section class="mission">
         <p>We spend too much time these days indoors...sitting usually.</p>
         <p>No wonder we are a mess!</p>
@@ -73,8 +129,9 @@
         </div>
       </section>
     </main>
-    <div id="breadCrumbs" ><a href="http://localhost:5173/index.html">Home</a></div>
+    <div id="breadCrumbs" ><a href="https://bucolic-basbousa-4f4e27.netlify.app/">Home</a></div>
     <footer id="footer"></footer>
+    <div id="overlay"></div>
     <!-- <script src="js/search.js" type="module"></script> -->
   </body>
   <script>
