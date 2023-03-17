@@ -108,14 +108,32 @@ export function sortList(list, ascending = true, value) {
         return list.sort(function (a, b) {
           return parseFloat(a.FinalPrice) - parseFloat(b.FinalPrice);
         });
-      }else{
+      } else{
         return list.sort(function (a, b) {
           return parseFloat(a.FinalPrice) + parseFloat(b.FinalPrice);
         });
       }
-      //return list
-      return list
   }
 }
 
+export function alertMessages(message, scroll = true) {
+  const alertDiv = document.createElement("div");
+  alertDiv.classList.add("alert");
+  //we'll need to personally set some kind of X for them to click so we can kill it
+  alertDiv.addEventListener("click", function(e) {
+    if (e.target.tagName == "SPAN") {
+      main.removeChild(this); 
+    }
+  });
+  const mainDiv = document.querySelector("main");
+  mainDiv.prepend(alert);
+  //if scroll = true isn't messed with, scroll to top
+  if (scroll) {
+    window.scrollTo(0, 0);
+  }
+}
 
+export function removeAllAlerts () {
+  const alerts = document.querySelectorAll(".alert")
+  alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
+}
