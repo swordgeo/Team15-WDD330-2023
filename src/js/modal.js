@@ -1,6 +1,7 @@
 import { updateCartCount } from "./cart-count.js";
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 import ProductDetails from "./ProductDetails.mjs";
+import ProductData from "./ProductData.mjs";
 
 
 function modalClicker() {
@@ -37,40 +38,30 @@ export default class ModalDetails {
   }
 
   async init() {
-    // this.product = await this.dataSource.findProductById(this.productId);
-
-    // document
-    //   .getElementById("addToCart")
-    //   .addEventListener("click", () => this.addProductToCart(this.product));
     const modalDiv = document.querySelector(".modal");
 
     const quickViewButtons = document.querySelectorAll(".quick-view-button");
   
     quickViewButtons.forEach((button) => {
-      button.addEventListener("click", (event) => {
-        console.log("Click")
+      button.addEventListener("click", async (event) => {
+        // console.log("Click");
         // modalDiv.textContent = "<h1>Hello!</h1>";
         // modalDiv.style.display = "block";
-        // console.log("click");
-        
-        const id = document.querySelector("data-product-id")
         const productId = event.target.dataset.productId;
-        console.log(productId);
-        const product = new ProductDetails(productId, this.dataSource);
-        product.init();
-        console.log(product);
-
-
-        //We're reading a product Id. Get the product and we're in the home stretch!!!
-
-        // console.log(ModalDiv)
-        this.renderModalDetails(product, this.modalElement);
-
+        // console.log(productId);
+        const dataSource = new ProductData("tents");
+        try {
+          const product = await dataSource.findProductById(productId);
+          // console.log(product);
+          this.renderModalDetails(product);
+        } catch (error) {
+          console.log(error);
+        }
       });
     });
   }
 
-  renderModalDetails(product, modalElement) {
+  renderModalDetails(product) {
     const modalContent = modalDetailsTemplate(product);
     this.modalElement.innerHTML = modalContent;
     this.modalElement.style.display = "block";
