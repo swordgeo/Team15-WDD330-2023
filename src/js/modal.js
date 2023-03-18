@@ -12,6 +12,7 @@ function modalClicker() {
 }
 function modalDetailsTemplate(obj) {
   return `<h3>${obj.Brand.Name}</h3>
+  <span id="modal-close">X</span>
     <h2 class="divider">${obj.NameWithoutBrand}</h2>
     <img
       class="divider"
@@ -34,11 +35,11 @@ export default class ModalDetails {
     this.productId = productId;
     this.dataSource = dataSource;
     this.product = null;
-    this.modalElement = document.querySelector(".modal");
+    this.modalElement = document.querySelector(".product-modal");
   }
 
   async init() {
-    const modalDiv = document.querySelector(".modal");
+    // const modalDiv = document.querySelector(".modal");
 
     const quickViewButtons = document.querySelectorAll(".quick-view-button");
   
@@ -59,16 +60,28 @@ export default class ModalDetails {
         }
       });
     });
+    
   }
 
   renderModalDetails(product) {
     const modalContent = modalDetailsTemplate(product);
     this.modalElement.innerHTML = modalContent;
     this.modalElement.style.display = "block";
+    document
+    .getElementById("modal-close")
+    .addEventListener("click", () => this.closeModal());
+
+    // const modalCloseButton = document.querySelector(".modal-close");
+    // modalCloseButton.addEventListener("click", (event) => {
+    //   this.closeModal();
+    // });
+    document
+      .getElementById("addToCart")
+      .addEventListener("click", () => this.addProductToCart(product));
   }
 
   closeModal() {
-    this.modalElement.classList.remove("open");
+    this.modalElement.style.display = "none";
   }
 
   async renderModal() {
@@ -76,6 +89,27 @@ export default class ModalDetails {
     this.renderModalDetails(this.product);
     modalClicker();
   }
+
+  addProductToCart(product) {
+    //first I need to grab the cart as it is
+    let cartContents = getLocalStorage("so-cart");
+    //If the cart is empty then .push errors because cartContents isn't an array
+    //Therefore we're gonna create an empty array before moving on
+    if (!Array.isArray(cartContents)) {
+      cartContents = [];
+    }
+    //This is where we check to see if the cart already has the item in question and revises the quantity rather than adding a dupe item at quantity 1
+    let existingProductIndex = cartContents.findIndex(p => p.Id === product.Id);
+    if (existingProductIndex !== -1) {
+      cartContents[existingProductIndex].quantity++;
+    } else {
+      product.quantity = 1;
+      cartContents.push(product);
+    }
+    setLocalStorage("so-cart", cartContents);
+    updateCartCount();
+  }
+
 }
 
 // const modalClicker = () => {
@@ -109,25 +143,7 @@ export default class ModalDetails {
 
 //   }
 
-//   addProductToCart(product) {
-//     //first I need to grab the cart as it is
-//     let cartContents = getLocalStorage("so-cart");
-//     //If the cart is empty then .push errors because cartContents isn't an array
-//     //Therefore we're gonna create an empty array before moving on
-//     if (!Array.isArray(cartContents)) {
-//       cartContents = [];
-//     }
-//     //This is where we check to see if the cart already has the item in question and revises the quantity rather than adding a dupe item at quantity 1
-//     let existingProductIndex = cartContents.findIndex(p => p.Id === product.Id);
-//     if (existingProductIndex !== -1) {
-//       cartContents[existingProductIndex].quantity++;
-//     } else {
-//       product.quantity = 1;
-//       cartContents.push(product);
-//     }
-//     setLocalStorage("so-cart", cartContents);
-//     updateCartCount();
-//   }
+
 
 //   renderModalDetails(selector) {
 //     const element = document.querySelector(selector);

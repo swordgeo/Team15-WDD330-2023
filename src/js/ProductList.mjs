@@ -1,6 +1,7 @@
 import { renderListWithTemplate, sortList } from "./utils.mjs";
 import ModalDetails from "./modal.js";
 
+
 function productCardTemplate(product) {
   let discountPercent =
     (parseFloat(product.FinalPrice) /
@@ -67,32 +68,14 @@ export default class ProductList {
     // our dataSource will return a Promise...so we can use await to resolve it.
     const list = await this.dataSource.getData(this.category);
     
-
     // render the list
     this.renderList(filterList(list));
 
     const modal = new ModalDetails(this.dataSource);
-    // const modalDiv = document.querySelector(".modal");
 
     modal.init();
-
-    //this works if necessary
-
-    // const quickViewButtons = document.querySelectorAll(".quick-view-button");
-  
-    // quickViewButtons.forEach((button) => {
-    //   button.addEventListener("click", (event) => {
-    //     console.log("Click")
-    //     modalDiv.textContent = "<h1>Hello!</h1>";
-    //     modalDiv.style.display = "block";
-    //     // console.log("click");
-    //     const productId = event.target.dataset.productId;
-    //     // modalClicker(productId);
-
-    //   });
-    // });
-
     
+
   }
 
   //Filter list
