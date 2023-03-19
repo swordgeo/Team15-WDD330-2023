@@ -41,7 +41,7 @@ export default class ModalDetails {
     // const modalDiv = document.querySelector(".modal");
 
     const quickViewButtons = document.querySelectorAll(".quick-view-button");
-  
+    
     quickViewButtons.forEach((button) => {
       button.addEventListener("click", async (event) => {
         const productId = event.target.dataset.productId;
@@ -102,45 +102,3 @@ export default class ModalDetails {
     updateCartCount();
   }
 }
-
-// const modalClicker = () => {
-//   console.log("ModalClicker function")
-//   const quickViewButtons = document.querySelectorAll('.quick-view-button');
-//   quickViewButtons.forEach(button => {
-//     // button.addEventListener('click', () => this.renderModalDetails(this.product));
-//     button.addEventListener('click', () => modalDetails.renderModalDetails(this.product));
-//   });
-// }
-
-
-
-
-// export default class ModalDetails {
-//   constructor(productId, dataSource) {
-//     this.productId = productId;
-//     this.product = {};
-//     this.dataSource = dataSource;
-//     this.modalElement = document.querySelector(".modal");
-//   }
-//   async init() {
-//     // use our datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
-//     this.product = await this.dataSource.findProductById(this.productId);
-//     // once we have the product details we can render out the HTML
-//     this.renderModalDetails(".modal");
-//     // once the HTML is rendered we can add a listener to Add to Cart button
-//     document
-//       .getElementById("addToCart")
-//       .addEventListener("click", () => this.addProductToCart(this.product));
-
-//   }
-
-
-
-//   renderModalDetails(selector) {
-//     const element = document.querySelector(selector);
-//     element.insertAdjacentHTML(
-//       "afterBegin",
-//       modalDetailsTemplate(this.product)
-//     );
-//   }
-// }

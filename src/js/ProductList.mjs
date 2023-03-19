@@ -72,10 +72,7 @@ export default class ProductList {
     this.renderList(filterList(list));
 
     const modal = new ModalDetails(this.dataSource);
-
     modal.init();
-    
-
   }
 
   //Filter list
@@ -90,14 +87,6 @@ export default class ProductList {
     //sort list
     list = sortList(list, this.ascending,this.sortName);
     renderListWithTemplate(productCardTemplate, this.listElement, list);
-
-
-
   }
 
-  // render before doing the stretch
-  // renderList(list) {
-  //   const htmlStrings = list.map(productCardTemplate);
-  //   this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
-  // }
 }
