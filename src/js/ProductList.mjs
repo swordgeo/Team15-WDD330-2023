@@ -1,4 +1,6 @@
 import { renderListWithTemplate, sortList } from "./utils.mjs";
+import ModalDetails from "./product-modal.js";
+
 
 function productCardTemplate(product) {
   let discountPercent =
@@ -17,6 +19,7 @@ function productCardTemplate(product) {
   <p class="product-card__price">$${
     product.FinalPrice
   }<br> (${discountPercent.toFixed(0)}% off retail)</p></a>
+  <button class="quick-view-button" data-product-id=${product.Id}>Quick View</button>
 </li>`;
 }
 
@@ -64,10 +67,12 @@ export default class ProductList {
   async init() {
     // our dataSource will return a Promise...so we can use await to resolve it.
     const list = await this.dataSource.getData(this.category);
-
+    
     // render the list
     this.renderList(filterList(list));
-    
+
+    const modal = new ModalDetails(this.dataSource);
+    modal.init();
   }
 
   //Filter list
@@ -84,9 +89,4 @@ export default class ProductList {
     renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
 
-  // render before doing the stretch
-  // renderList(list) {
-  //   const htmlStrings = list.map(productCardTemplate);
-  //   this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
-  // }
 }

@@ -28,4 +28,5 @@ console.log(breadcrumb)
 const listing = new ProductList(category, dataSource, element, sortType);
 
 listing.init();
-updateCartCount();
+
+ updateCartCount();
