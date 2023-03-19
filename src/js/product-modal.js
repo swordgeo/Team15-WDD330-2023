@@ -1,6 +1,5 @@
-import { updateCartCount } from "./cart-count.js";
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 
 
 function modalClicker() {
@@ -46,7 +45,7 @@ export default class ModalDetails {
       button.addEventListener("click", async (event) => {
         const productId = event.target.dataset.productId;
         // console.log(productId);
-        const dataSource = new ProductData("tents");
+        const dataSource = new ExternalServices("tents");
         try {
           const product = await dataSource.findProductById(productId);
           // console.log(product);
@@ -99,6 +98,7 @@ export default class ModalDetails {
       cartContents.push(product);
     }
     setLocalStorage("so-cart", cartContents);
+    //re-up updateCartCount
     window.dispatchEvent(new Event('load'));
   }
 }
