@@ -1,6 +1,5 @@
 import { updateCartCount } from "./cart-count.js";
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
-import ProductDetails from "./ProductDetails.mjs";
 import ProductData from "./ProductData.mjs";
 
 
@@ -11,9 +10,9 @@ function modalClicker() {
   }
 }
 function modalDetailsTemplate(obj) {
-  return `<h3>${obj.Brand.Name}</h3>
-  <span id="modal-close">X</span>
-    <h2 class="divider">${obj.NameWithoutBrand}</h2>
+  return `<div id="modal-head-divider"><h3>${obj.Brand.Name} ${obj.NameWithoutBrand}</h3>
+  <span id="modal-close">X</span></div>
+    
     <img
       class="divider"
       src="${obj.Images.PrimaryLarge}"
@@ -45,9 +44,6 @@ export default class ModalDetails {
   
     quickViewButtons.forEach((button) => {
       button.addEventListener("click", async (event) => {
-        // console.log("Click");
-        // modalDiv.textContent = "<h1>Hello!</h1>";
-        // modalDiv.style.display = "block";
         const productId = event.target.dataset.productId;
         // console.log(productId);
         const dataSource = new ProductData("tents");
@@ -64,24 +60,20 @@ export default class ModalDetails {
   }
 
   renderModalDetails(product) {
+    this.modalElement = document.querySelector(".product-modal");
     const modalContent = modalDetailsTemplate(product);
     this.modalElement.innerHTML = modalContent;
-    this.modalElement.style.display = "block";
+    this.modalElement.classList.add("show");
     document
     .getElementById("modal-close")
     .addEventListener("click", () => this.closeModal());
-
-    // const modalCloseButton = document.querySelector(".modal-close");
-    // modalCloseButton.addEventListener("click", (event) => {
-    //   this.closeModal();
-    // });
     document
       .getElementById("addToCart")
       .addEventListener("click", () => this.addProductToCart(product));
   }
 
   closeModal() {
-    this.modalElement.style.display = "none";
+    this.modalElement.classList.remove("show");
   }
 
   async renderModal() {
@@ -109,7 +101,6 @@ export default class ModalDetails {
     setLocalStorage("so-cart", cartContents);
     updateCartCount();
   }
-
 }
 
 // const modalClicker = () => {

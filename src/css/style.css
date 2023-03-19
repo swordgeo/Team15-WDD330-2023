@@ -297,16 +297,36 @@ footer {
 
 
 .product-modal{
-  display: none;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  transition: 200ms ease-in-out;
+  top: 10%;
+  left: 40%;
+  padding: 10px;
+  /* transform: translate(-50%, -50%) scale(0); */
+  /* transition: 200ms ease-in-out; */
+  z-index: 100;
   border: 1px solid black;
   border-radius: 10px;
-  z-index: 10;
   background-color: white;
   width: 500px;
   max-width: 80%;
+  display: none; 
+  /* hide by default */
+  /* opacity: 0;
+  pointer-events: none; */
+}
+
+.product-modal.show {
+  display: block !important;
+  /* opacity: 1;
+  pointer-events: auto; */
+}
+
+#modal-head-divider {
+  display: flex;
+  justify-content: space-between;
+}
+
+#modal-close {
+  font-size: 1.5em;
+  color: red;
 }
