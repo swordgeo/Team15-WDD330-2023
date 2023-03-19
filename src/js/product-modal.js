@@ -99,6 +99,6 @@ export default class ModalDetails {
       cartContents.push(product);
     }
     setLocalStorage("so-cart", cartContents);
-    updateCartCount();
+    window.dispatchEvent(new Event('load'));
   }
 }
