@@ -2,8 +2,6 @@ import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
 import { loadHeaderFooter, getParam } from "./utils.mjs";
 import { updateCartCount } from "./cart-count.js";
-//modal experiment
-import ModalDetails from './modal.js';
 
 const headerEl = document.querySelector("header");
 const footerEl = document.querySelector("footer");

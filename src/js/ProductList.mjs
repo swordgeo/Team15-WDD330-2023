@@ -1,5 +1,5 @@
 import { renderListWithTemplate, sortList } from "./utils.mjs";
-import ModalDetails from "./modal.js";
+import ModalDetails from "./product-modal.js";
 
 
 function productCardTemplate(product) {
